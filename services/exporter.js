@@ -25,6 +25,7 @@ var exporter = function(config, db) {
       console.log("New log processed");
     });
     
+    console.log("============================== newEvents - ", log.event);
     if (log.event === "Transfer") {
       self.exportBalance(log.args._from);
       self.exportBalance(log.args._to);
@@ -45,6 +46,7 @@ var exporter = function(config, db) {
     var accounts = {};
     
     logs.forEach(function(log) {
+      console.log("============================== allEvents - ", log.event);
       if (log.event === "Transfer") {
         accounts[log.args._from] = log.args._from;
         accounts[log.args._to] = log.args._to;
